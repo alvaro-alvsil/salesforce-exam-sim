@@ -1,0 +1,12 @@
+{
+  "name": "Salesforce Exam Simulator",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {},
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"]
+    }
+  },
+  "forwardPorts": [8501],
+  "postCreateCommand": "pip install streamlit"
+}

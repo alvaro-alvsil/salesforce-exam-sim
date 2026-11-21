@@ -1,0 +1,77 @@
+{
+  "exam_title": "Salesforce Certified Administrator (ADM-201 Practice)",
+  "time_limit_minutes": 105,
+  "passing_score_percent": 65,
+  "questions": [
+    {
+      "id": 1,
+      "topic": "Security and Access",
+      "type": "single",
+      "question": "Universal Containers has set the Organization-Wide Default (OWD) sharing setting for the Custom Object 'Project__c' to Private. The VP of Sales needs full read and edit access to all project records owned by their direct and indirect sales team members. What is the most efficient and scalable way for the administrator to grant this access?",
+      "options": {
+        "A": "Create a permission set granting 'Modify All' access on Project__c and assign it to the VP of Sales.",
+        "B": "Ensure 'Grant Access Using Hierarchies' is enabled on the Project__c sharing settings and place the VP above the sales team in the Role Hierarchy.",
+        "C": "Create an owner-based sharing rule for every sales representative to share their records with the VP of Sales.",
+        "D": "Change the Organization-Wide Default (OWD) for Project__c to Public Read/Write."
+      },
+      "correct_answers": ["B"],
+      "explanation": "When an object's Organization-Wide Default (OWD) is Private, enabling 'Grant Access Using Hierarchies' allows users higher up in the Role Hierarchy to automatically access records owned by their subordinates. This avoids maintenance-intensive manual sharing rules or assigning excessive administrative permissions ('Modify All')."
+    },
+    {
+      "id": 2,
+      "topic": "Data Modeling and Management",
+      "type": "multiple",
+      "question": "An administrator at Cloud Kicks is designing a custom data model and is evaluating whether to use a Master-Detail relationship instead of a Lookup relationship between Invoice__c (child) and Account (parent). Which TWO capabilities are unique to Master-Detail relationships? (Choose 2)",
+      "options": {
+        "A": "Roll-up summary fields can be created on the master object to calculate sums, counts, minimums, or maximums of detail records.",
+        "B": "The child record can exist independently without requiring a parent record to be selected.",
+        "C": "Deleting the master record automatically deletes all associated detail records (cascade delete).",
+        "D": "The child object can have up to 40 Master-Detail relationships defined on it."
+      },
+      "correct_answers": ["A", "C"],
+      "explanation": "Key characteristics exclusive to Master-Detail relationships include: 1) Roll-up summary fields are supported only on the master object to aggregate child values; 2) Cascade delete automatically deletes detail records when the master record is deleted. In contrast, Lookup fields allow records to exist without a parent and custom objects can have at most 2 Master-Detail relationships (whereas they can have up to 40 lookups)."
+    },
+    {
+      "id": 3,
+      "topic": "Standard and Custom Objects",
+      "type": "single",
+      "question": "Ursa Major Solar sells both residential solar panels and commercial enterprise equipment. The sales teams require different picklist values for the Opportunity 'Stage' field and distinct page layouts with different custom fields. What should the administrator configure to satisfy these requirements?",
+      "options": {
+        "A": "Create two Opportunity Record Types, associate each with a distinct Sales Process, and assign unique Page Layouts.",
+        "B": "Create two validation rules that restrict picklist values depending on the Opportunity Owner's profile.",
+        "C": "Use Dynamic Forms on a single page layout and set field-level visibility based on user profile.",
+        "D": "Create two separate Custom Objects called 'Residential_Opportunity__c' and 'Commercial_Opportunity__c'."
+      },
+      "correct_answers": ["A"],
+      "explanation": "To customize the Opportunity 'Stage' picklist values by business line, Salesforce requires creating 'Sales Processes'. Each Sales Process is then linked to a Record Type, which allows assigning different Page Layouts and picklist selections for residential versus commercial opportunities."
+    },
+    {
+      "id": 4,
+      "topic": "Workflow and Process Automation",
+      "type": "multiple",
+      "question": "An administrator needs to automate business logic when a Case record is created or updated. When should the administrator consider using a 'Fast Field Updates' (Before-Save) Record-Triggered Flow instead of an 'Actions and Related Records' (After-Save) Record-Triggered Flow? (Choose 2)",
+      "options": {
+        "A": "When the flow needs to update fields on the triggering Case record before it is saved to the database.",
+        "B": "When the flow needs to send an email alert to the Case Owner upon creation.",
+        "C": "When the flow needs to optimize system performance and avoid unnecessary recursive database operations.",
+        "D": "When the flow needs to create a related Task record assigned to the support agent."
+      },
+      "correct_answers": ["A", "C"],
+      "explanation": "Before-save flows ('Fast Field Updates') run before the record is saved to the database. They execute significantly faster and avoid extra recursive DML operations, making them the best practice when only updating fields on the record that triggered the flow. Actions such as sending email alerts or creating related records (Tasks) require an After-save flow ('Actions and Related Records')."
+    },
+    {
+      "id": 5,
+      "topic": "Sales and Marketing Applications",
+      "type": "single",
+      "question": "An administrator at Northern Trail Outfitters needs to ensure that custom fields on the Lead object ('Product_Interest__c' and 'Budget__c') are automatically transferred to custom fields on the Contact and Opportunity objects when a Lead is converted. What should the administrator configure?",
+      "options": {
+        "A": "Create a Record-Triggered Flow on the Lead object that executes when IsConverted equals True.",
+        "B": "Use the 'Map Lead Fields' tool in the Lead Object Manager to map custom Lead fields to corresponding Contact and Opportunity custom fields.",
+        "C": "Create an Apex trigger on Lead conversion to insert values into Contact and Opportunity records.",
+        "D": "Use Formula fields on Contact and Opportunity that reference the converted Lead ID."
+      },
+      "correct_answers": ["B"],
+      "explanation": "Salesforce provides standard declarative functionality in Setup > Object Manager > Lead > Fields & Relationships > 'Map Lead Fields'. This tool maps custom fields from the Lead object to compatible custom fields on Account, Contact, and Opportunity upon conversion, with zero code or automation overhead."
+    }
+  ]
+}
